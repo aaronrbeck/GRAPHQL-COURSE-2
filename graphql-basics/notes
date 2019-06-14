@@ -12,12 +12,14 @@ Section 2 - Graphql basics schemas and queries
 10 - an import/export lesson, I skipped
 11 - set up index.js with graphql-yoga, defined typedef and resolver objects
 12 - lesson on scalar types - skipped
-
+13 - Nodemon added npm install nodemon --save-dev, changed package.json start script to run nodemon through babel     "start": "nodemon src/index.js --exec babel-node",
+14 - creating custom types
 
 
 
 
 
 Where I'm stuck
+
 
 How I got unstuck
