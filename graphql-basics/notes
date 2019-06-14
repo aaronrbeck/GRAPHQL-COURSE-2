@@ -5,6 +5,8 @@ Git initialized folder: GRAPHQL-COURSE-2
 
 Lessons:
 9 - set up babel and npm init
+10 - an import/export lesson, I skipped
+11 - set up index.js with graphql-yoga, defined typedef and resolver objects
 
 Where I'm stuck
 
