@@ -1,30 +1,33 @@
 //11 npm install graphql-yoga then import
 import { GraphQLServer } from 'graphql-yoga'
 
-//11 Type definitaions (shema)
+//12 Challenge Type definitaions (shema)
 const typeDefs =`
     type Query {
-        hello: String!
-        name: String!
-        location: String!
-        bio: String!
+        title: String!
+        price: Float!
+        releaseYear: Int
+        inStock: Boolean!
     }
 `
 
-//11 Resolvers
+//12 challenge Resolvers
 const resolvers = {
     Query: {
-        hello(){
-            return "this is first query"
+        title(){
+            return "the war of art"
         },
-        name(){
-            return "andrew mead"
+        price(){
+            return 12.99
         },
-        bio(){
-            return "My name is aaron.  I'm from Idaho"
+        releaseYear(){
+            return null
         },
-        location(){
-            return "idaho"
+        rating(){
+            return 5
+        },
+        inStock(){
+            return true
         }
     }
 }

@@ -4,9 +4,19 @@ Git initialized folder: GRAPHQL-COURSE-2
 
 
 Lessons:
+Section 1
+Lectures
+
+Section 2 - Graphql basics schemas and queries
 9 - set up babel and npm init
 10 - an import/export lesson, I skipped
 11 - set up index.js with graphql-yoga, defined typedef and resolver objects
+12 - lesson on scalar types - skipped
+
+
+
+
+
 
 Where I'm stuck
 
