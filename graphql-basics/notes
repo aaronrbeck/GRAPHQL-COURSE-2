@@ -14,7 +14,9 @@ Section 2 - Graphql basics schemas and queries
 12 - lesson on scalar types - skipped
 13 - Nodemon added npm install nodemon --save-dev, changed package.json start script to run nodemon through babel     "start": "nodemon src/index.js --exec babel-node",
 14 - creating custom types
-
+15 - operation arguments, 
+    added greeting with an optional name argument
+    there are 4 arguments passed to every resolver: (parent, args, ctx, info)
 
 
 

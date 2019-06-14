@@ -4,8 +4,10 @@ import { GraphQLServer } from 'graphql-yoga'
 //14 Type definitaions (shema)
 const typeDefs =`
     type Query {
+        greeting(name: String, position: String): String!
         me: User!
         post: Post!
+        add(a: Float!, b: Float!): Float!
     }
 
     type User {
@@ -20,11 +22,25 @@ const typeDefs =`
         body: String!
         published: Boolean!
     }
+    
 `
 
 //12 challenge Resolvers
 const resolvers = {
+
     Query: {
+        add(parent, args, ctx, info){
+            return args.a + args.b
+        },
+        greeting(parent, args, ctx, info){
+            if (args.name && args.position){
+                return `Hello, ${args.name}! You are my favorite ${args.position}.`
+            } else {
+                return "Hello"
+            }
+            
+            
+        },
         me(){
             return{
                 id: '123098',
