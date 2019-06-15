@@ -45,19 +45,23 @@ const posts = [{
 const comments = [{
     id: '20',
     text: 'comment 20 text',
-    author: '1'
-}, {
+    author: '1',
+    post: '10'
+    }, {
         id: '21',
         text: 'comment 21 text',
-        author: '1'
+        author: '1',
+        post: '10'
     }, {
         id: '22',
         text: 'comment 22 text',
-        author: '2'
+        author: '2',
+        post: '11'
     }, {
         id: '23',
         text: 'comment 23 text',
-        author: '3'
+        author: '3',
+        post: '12'
     },
 ]
 
@@ -85,11 +89,13 @@ const typeDefs =`
         body: String!
         published: Boolean!
         author: User!
+        comments: [Comment!]!
     }
     type Comment {
         id: ID!
         text: String!
         author: User!
+        post: Post!
     }
     
 `
@@ -147,9 +153,19 @@ const resolvers = {
         {
             return users.id === parent.author
         })
-        }
-    }
-,
+        },
+        //lesson 22 set up resolver for Post->comments type definition:
+        comments(parent, args, ctx, info){
+            // return comments.find(()=>{
+            //     return comments.id === parent.comments
+            //I tried to do the above, instructor did:
+            return comments.filter((comment)=>{
+                return comment.post === parent.id
+            })
+            }
+        },
+    
+
 //19 setting up another relational resolver.  When you have custom relational data
 // that is non-scalar items defined in your type, that relational data 
 //needs it's own sub resolver, so:
@@ -175,9 +191,15 @@ Comment:{
         //     return comment.author === parent.id
         //I don't have a grasp of how things are related yet,
         //I tried to do the above, when instructor did:
-        return users.find((user)=>{
+     return users.find((user)=>{
             return user.id === parent.author
         })
+        },
+        //lesson 22 add resolver for Comment->field type definition:
+        post(parent, args, ctx, info){
+            return posts.find((post)=>{
+            return post.id === parent.post
+    })
         }
     }
 }
