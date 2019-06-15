@@ -19,6 +19,11 @@ Section 2 - Graphql basics schemas and queries
     there are 4 arguments passed to every resolver: (parent, args, ctx, info)
 16 - arrays intro, did not push
 17 - array partII, custom array
+18 - relational data did not push
+19 - relational data: arrays
+20 - comment challenge set up, aded type Comment to type defs, set up dummy comments data, set up a query->comments resolver
+
+
 
 
 
