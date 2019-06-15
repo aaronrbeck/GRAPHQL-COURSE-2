@@ -25,6 +25,10 @@ Section 2 - Graphql basics schemas and queries
 21 - comment challenge: comment user relationship
 22 - comment challenge: comment post relationship established in type field and resolvers
 
+Section 3: mutations
+23: lecture?
+24: set up first mutation, added uuid dependancy for randomly generated id, uuid documentation has multiple ways it can produce id's
+
 
 
 

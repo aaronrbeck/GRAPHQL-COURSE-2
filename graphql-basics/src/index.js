@@ -1,5 +1,7 @@
 //11 npm install graphql-yoga then import
 import { GraphQLServer } from 'graphql-yoga'
+//24 npm install uuid
+import uuidv4 from 'uuid/v4'
 
 //17 added sample user data
 const users = [{
@@ -75,6 +77,10 @@ const typeDefs =`
         comments: [Comment!]!
     }
 
+    type Mutation {
+        createUser(name: String!, email: String!, age: Int): User!
+    }
+
     type User {
         id: ID!
         name: String!
@@ -144,8 +150,36 @@ const resolvers = {
         }
 
     },
+    
+    //24 Mutation resolver
+    Mutation:{
+        createUser(parent, args, ctx, info){
+            //24 use uuid to create id, first check if email is taken
+            const emailTaken = users.some((user)=> user.email === args.email)
+            if (emailTaken){
+                throw new Error('Email taken')
+            }
+            //use the uuidv4 to create unique id, assign data to a thing called user singular
+            const user = {
+                id: uuidv4(),
+                name: args.name,
+                email: args.email,
+                args: args.age
+            }
+            //push that newly created singular user thing onto our allready established users plural array
+            users.push(user)
+            return user
+
+        }
+    },
+    
+    
+    
+    
     //18 relational data resolvers
     //types that include relational data need their own resovlers in addition to the query resolvers
+    
+    
     Post:{
         author(parent, args, ctx, info){
             //the Post information lives on the parent argument so we can use that to figure out which user object needs to get returned
