@@ -17,7 +17,8 @@ Section 2 - Graphql basics schemas and queries
 15 - operation arguments, 
     added greeting with an optional name argument
     there are 4 arguments passed to every resolver: (parent, args, ctx, info)
-
+16 - arrays intro, did not push
+17 - array partII, custom array
 
 
 
