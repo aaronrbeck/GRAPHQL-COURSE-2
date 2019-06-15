@@ -44,16 +44,20 @@ const posts = [{
 ]
 const comments = [{
     id: '20',
-    text: 'comment 20 text'
+    text: 'comment 20 text',
+    author: '1'
 }, {
         id: '21',
-        text: 'comment 21 text'
+        text: 'comment 21 text',
+        author: '1'
     }, {
         id: '22',
-        text: 'comment 22 text'
+        text: 'comment 22 text',
+        author: '2'
     }, {
         id: '23',
-        text: 'comment 23 text'
+        text: 'comment 23 text',
+        author: '3'
     },
 ]
 
@@ -73,6 +77,7 @@ const typeDefs =`
         email: String!
         age: Int
         posts: [Post!]!
+        comments: [Comment!]!
     }
     type Post {
         id: ID!
@@ -84,6 +89,7 @@ const typeDefs =`
     type Comment {
         id: ID!
         text: String!
+        author: User!
     }
     
 `
@@ -152,9 +158,30 @@ User:{
         return posts.filter((post)=>{
             return post.author === parent.id
         })
+    },
+    comments(parent, args, ctx, info){
+        //return comments
+        //still not getting the connections,
+        //i tried to just return comments when instructur:
+        return comments.filter((comment)=>{
+            return comment.author === parent.id
+        })
+    }
+},
+//added in lesson 21:
+Comment:{
+    author(parent, args, ctx, info){
+        // return comments.filter((comment)=>{
+        //     return comment.author === parent.id
+        //I don't have a grasp of how things are related yet,
+        //I tried to do the above, when instructor did:
+        return users.find((user)=>{
+            return user.id === parent.author
+        })
+        }
     }
 }
-}
+
 
 const server = new GraphQLServer({
     typeDefs,
