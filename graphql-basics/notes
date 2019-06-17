@@ -28,6 +28,27 @@ Section 2 - Graphql basics schemas and queries
 Section 3: mutations
 23: lecture?
 24: set up first mutation, added uuid dependancy for randomly generated id, uuid documentation has multiple ways it can produce id's
+25: createPost and createComment mutations added - Currently getting an erro in playground about non-nullable field when I use the createPost mutation
+26: added rest spread operator, also plugins to .babelrc
+    
+    npm install babel-plugin-transform-object-rest-spread
+    npm WARN apollo-cache-control@0.1.1 requires a peer of graphql@0.10.x - 0.13.x but none is installed. You must install peer dependencies yourself.
+    npm WARN apollo-server-core@1.4.0 requires a peer of graphql@^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 but none is installed. You must install peer dependencies yourself.
+    npm WARN apollo-tracing@0.1.4 requires a peer of graphql@0.10.x - 0.13.x but none is installed. You must install peer dependencies yourself.
+    npm WARN graphql-extensions@0.0.10 requires a peer of graphql@0.10.x - 0.13.x but none is installed. You must install peer dependencies yourself.
+    npm WARN graphql-subscriptions@0.5.8 requires a peer of graphql@^0.10.5 || ^0.11.3 || ^0.12.0 || ^0.13.0 but none is installed. You must install peer dependencies yourself.
+    npm WARN grap
+    a preset is nothing more than a collection of plugins grouped together to provide some cohesive behavior
+    in this case we added the plugin seperatly for some reason
+-
+
+
+
+
+
+
+
+
 
 
 
@@ -39,5 +60,32 @@ Section 3: mutations
 
 Where I'm stuck
 
+25 My createPost mutation is returning an error message about non-nullable fields, but I think I've filled out each field
+
+
+
+
+
 
 How I got unstuck
+
+26 we added     I never got unstuck, but just ignored the error message.
+    I did run into some problems starting the server, but after re-watching video I tracked that
+    down to having incorrect words in my .babelrc plugins file
+
+    npm install babel-plugin-transform-object-rest-spread
+
+    and I got the following error messages:
+
+        npm WARN apollo-cache-control@0.1.1 requires a peer of graphql@0.10.x - 0.13.x but none is installed. You must install peer dependencies yourself.
+        npm WARN apollo-server-core@1.4.0 requires a peer of graphql@^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 but none is installed. You must install peer dependencies yourself.
+        npm WARN apollo-tracing@0.1.4 requires a peer of graphql@0.10.x - 0.13.x but none is installed. You must install peer dependencies yourself.
+        npm WARN graphql-extensions@0.0.10 requires a peer of graphql@0.10.x - 0.13.x but none is installed. You must install peer dependencies yourself.
+        npm WARN graphql-subscriptions@0.5.8 requires a peer of graphql@^0.10.5 || ^0.11.3 || ^0.12.0 || ^0.13.0 but none is installed. You must install peer dependencies yourself.
+        npm WARN grap
+    yet my package.json dependancy is     "graphql": "^14.3.1",
+    reverting back to an early version does not seem like the move
+
+
+-
+
