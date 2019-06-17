@@ -78,10 +78,29 @@ const typeDefs =`
     }
 
     type Mutation {
-        createUser(name: String!, email: String!, age: Int): User!
-        createPost(title: String!, body: String!, published: Boolean!, author: ID!): Post!
-        createComment(text: String!, author: ID!, post: ID!): Comment!
+        createUser(data: CreateUserInput!): User!
+        createPost(data: CreatePostInput!): Post!
+        createComment(data: CreateCommentInput!): Comment!
     }
+
+    input CreateUserInput{
+        name: String!
+        email: String!
+        age: Int
+    }
+        input CreatePostInput {
+        title: String!
+        body: String!
+        published: Boolean!
+        author: ID!
+        }
+
+    input CreateCommentInput {
+        text: String!
+        author: ID!
+        post: ID!
+    }
+
 
     type User {
         id: ID!
@@ -130,6 +149,11 @@ const resolvers = {
                 return isTitleMatch || isBodyMatch
             })
         },
+        comments(parent, args, ctx, info) {
+            return comments
+
+        },
+
         me(){
             return{
                 id: '123098',
@@ -146,10 +170,6 @@ const resolvers = {
                 published: false
             }
         },
-        comments(parent, args, ctx, info){
-            return comments
-
-        }
 
     },
     
@@ -157,14 +177,14 @@ const resolvers = {
     Mutation:{
         createUser(parent, args, ctx, info){
             //24 use uuid to create id, first check if email is taken
-            const emailTaken = users.some((user)=> user.email === args.email)
+            const emailTaken = users.some((user)=> user.email === args.data.email)
             if (emailTaken){
                 throw new Error('Email taken')
             }
             //use the uuidv4 to create unique id, assign data to a thing called user singular
             const user = {
                 id: uuidv4(),
-                ...args
+                ...args.data
             }
             //push that newly created singular user thing onto our allready established users plural array
             users.push(user)
@@ -173,22 +193,22 @@ const resolvers = {
         },
         //25 createPost mutation resolver
         createPost(parent, args, ctx, info){
-            const userExists = users.some((user) => user.id === args.author)
+            const userExists = users.some((user) => user.id === args.data.author)
             if (!userExists){
                 throw new Error('User not found')
 
             }
             const post = {
                 id: uuidv4(),
-                ...args
+                ...args.data
             }
             posts.push(post)
             return post
         },
         //25 challenge:
         createComment(parent, args, ctx, info){
-            const postExists = posts.some((post) => post.id === args.post && post.published)
-            const userExists = users.some((user) => user.id === args.author)
+            const userExists = users.some((user) => user.id === args.data.author)
+            const postExists = posts.some((post) => post.id === args.data.post && post.published)
             if (!userExists || !postExists) {
                 throw new Error('Unable to find user and post')
 
@@ -196,7 +216,7 @@ const resolvers = {
 
             const comment = {
                 id: uuidv4(),
-                ...args
+                ...args.data
             }
             comments.push(comment)
             return comment
@@ -213,9 +233,9 @@ const resolvers = {
     Post:{
         author(parent, args, ctx, info){
             //the Post information lives on the parent argument so we can use that to figure out which user object needs to get returned
-            return users.find(()=>
+            return users.find((user)=>
         {
-            return users.id === parent.author
+            return user.id === parent.author
         })
         },
         //lesson 22 set up resolver for Post->comments type definition:

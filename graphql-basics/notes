@@ -41,7 +41,7 @@ Section 3: mutations
     a preset is nothing more than a collection of plugins grouped together to provide some cohesive behavior
     in this case we added the plugin seperatly for some reason
 -
-
+27: defined input types createUser, createPost, and createComment to make argument inputs easier to handle,  and updated resolver with args.data. 
 
 
 
@@ -60,14 +60,26 @@ Section 3: mutations
 
 Where I'm stuck
 
-25 My createPost mutation is returning an error message about non-nullable fields, but I think I've filled out each field
-
-
 
 
 
 
 How I got unstuck
+
+25 instructor answered question
+    in my Post resolver I had: Post:{
+        author(parent, args, ctx, info){
+            //the Post information lives on the parent argument so we can use that to figure out which user object needs to get returned
+            return users.find(()=>
+        {
+            return users.id === parent.author
+        })
+        instructor stated: Thanks for the details! The issue is in this function. It's looking at users.id which doesn't exist. It should be looking at the id property of the array item instead.
+
+    so I think I needed to change users.id to user.id because I don't want to look at the users array, I want to look at "this" specific user
+    My createPost mutation is returning an error message about non-nullable fields, but I think I've filled out each field
+
+
 
 26 we added     I never got unstuck, but just ignored the error message.
     I did run into some problems starting the server, but after re-watching video I tracked that
@@ -86,6 +98,22 @@ How I got unstuck
     yet my package.json dependancy is     "graphql": "^14.3.1",
     reverting back to an early version does not seem like the move
 
+
+
+
+
+
+27 when you get an error back saying that something is not defined you need to look to see if you needed to feed in a value somewhere in to a parameter
+    Running the createPost mutation in playground I get: 
+    {
+  "data": null,
+  "errors": [
+    {
+      "message": "user is not defined",
+      I am using an id that is hard coded into my user array to define the author
+      when I use a non-existant author id I am gettting my error message
+      how can the user not be defined?  it is not saying that the user does not exist, 
+      just that it is not defined.  how can I be missing the clues?
 
 -
 
