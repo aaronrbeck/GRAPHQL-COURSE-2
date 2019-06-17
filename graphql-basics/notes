@@ -51,7 +51,8 @@ Section 3: mutations
     context property discussed to use with db.js - added context to the gqlyoga object at bottom of index.js
     import db.js to index.js
     desctructured ctx to access db.js
-31: refactor into seperate files
+31: refactor into seperate files to resolvers folder
+    imported each file into index.js, and added them to a resolvers oject in the gql server
 
 
 
