@@ -43,10 +43,15 @@ Section 3: mutations
 -
 27: defined input types createUser, createPost, and createComment to make argument inputs easier to handle,  and updated resolver with args.data. 
 28/29: added delete user mutation/ added deletePost and deleteComment mutations
-
-
-
-
+30: structure refactoring: created schema.graphql - good lesson to watch again to understand ctx, etc.
+        # connected to index via Graphql server path directory at bottom of index.js
+    since nodmon does not autmatically look at schema.graphql files we connected nodemon via
+    extension configuration tool using the ext argument in start scripts
+    moved static data to it's own file - structure (via db.js) will be same as when we are using a real database
+    context property discussed to use with db.js - added context to the gqlyoga object at bottom of index.js
+    import db.js to index.js
+    desctructured ctx to access db.js
+31: refactor into seperate files
 
 
 
