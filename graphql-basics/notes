@@ -42,7 +42,7 @@ Section 3: mutations
     in this case we added the plugin seperatly for some reason
 -
 27: defined input types createUser, createPost, and createComment to make argument inputs easier to handle,  and updated resolver with args.data. 
-
+28/29: added delete user mutation/ added deletePost and deleteComment mutations
 
 
 
