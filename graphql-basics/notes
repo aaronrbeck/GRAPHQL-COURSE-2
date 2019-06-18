@@ -60,7 +60,7 @@ Section 3: mutations
 Section 4: subscriptions
 34: intruduction lecture
 35: set up a dummy introductory subscriptions
-
+36: set up a comment subscription in subscription.js and called pubsub on createComment in mutation.js
 
 
 

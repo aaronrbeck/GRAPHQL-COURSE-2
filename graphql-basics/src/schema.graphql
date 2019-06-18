@@ -23,6 +23,7 @@
 #  35 subscriptions
 type Subscription{
     count: Int!
+    comment(postID: ID!): Comment!
 }
 
     input CreateUserInput{
