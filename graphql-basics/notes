@@ -1,7 +1,7 @@
 Basics:
 npm run start  - inside graphql-basics folder
 Git initialized folder: GRAPHQL-COURSE-2
-
+docker ps   docker kill  docker rm
 
 Lessons:
 Section 1
@@ -65,6 +65,25 @@ Section 4: subscriptions
 38: post subscription added
 39: comment subscription challenge
 40: enums: added enum mutationtype to shchema.graphql and modified payload mutation fields as necessary
+
+PartII
+Section 5: 
+41: Section introduction video 
+42: Prisma introduction prisma is an ORM  that works with any database
+43: pirsma initial setup with sqldatabase at heroku
+    heroku: resources -> search for heroku postgres -> name and provision it
+    -> view credentials
+    he set up docker
+44: windows setup
+45:ubunto setup
+46: set up prisma, 
+    created graphgl-prisma folder,
+    prisma init, naming it prisma, SSL Y, don't generate language, removed schema property from docker-compose, 
+    docker-compsose up -d prisma deploy
+    at this point there is a playground at localhost:4466 which is on the prisma api
+    the cool thing about prisma is that it writes the mutations queries, and subsciptions for whatever types we have defined in datamodel.prisma for us
+
+
 
 
 Where I'm stuck

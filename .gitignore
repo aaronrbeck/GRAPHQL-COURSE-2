@@ -144,3 +144,4 @@ typings/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+graphql-basics/street-cred
