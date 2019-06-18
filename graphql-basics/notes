@@ -63,11 +63,30 @@ Section 4: subscriptions
 36: set up a comment subscription in subscription.js and called pubsub on createComment in mutation.js
 37: post subscription challenge - fell flat on my face - need to walk through again how everything refrences each other
 38: post subscription added
-
+39: comment subscription challenge
+40: enums: added enum mutationtype to shchema.graphql and modified payload mutation fields as necessary
 
 
 Where I'm stuck
 38 updatePost mutation will not affect the Boolean status of published
+39: testing comment subscription:
+    ok: subscritions to creates work
+    probmlem: subscriptions to update: subscription page seems frozen? seems odd behavior
+        update mutation is returning the update ok, so where does the problem lie?
+    ok: subscriptions to delete: subscription seems to see the delete, but
+    resovled problem: I get a data null error deletedComments is not defined for return value in the deleteComment mutation
+        this last one i would guess that I am not handling my deletedComment catch array correctly
+        ** tracked this down to another extra s, I had deletedComments when I needed deletedComment for my return value in my deletecomment mutation
+
+
+
+
+
+
+
+-
+
+
 
 
 How I got unstuck
@@ -126,5 +145,12 @@ How I got unstuck
     ALWAYS RETURN SOMETHING
 38: once again, the dreaded cannont return null for non-nullable field Subscription.post
     once again, same problem, in a function I had an object as plural when it should have been singular
+39 once again, cannont return null for non-nullable field Subscription.comment
+    I know the createComment mutation is working, as the playground returns the information,
+    plus I can see it with comment query.  
+    I have line by lined Subscription.js 3x
+    I have line by lined the schema.graphql
+    **finally found it as a misnamed object from when I copy and pasted some sections to use as a template
+    ** problem was in the pubsub section of createComment on mutation.js
 -
 

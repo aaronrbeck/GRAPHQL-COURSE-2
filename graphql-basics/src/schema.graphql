@@ -22,7 +22,8 @@
     }
 #  35 subscriptions
 type Subscription{
-    comment(postId: ID!): Comment!
+    #39 comment subscription payload formatt
+    comment(postId: ID!): CommentSubscriptionPayload!
     #36 post subscriptio challenge
     #38 changed to the payload formatt
     post: PostSubscriptionPayload!
@@ -85,8 +86,21 @@ type Subscription{
         author: User!
         post: Post!
     }
+
+    #40 Enum lesson
+    enum MutationType{
+        CREATED
+        UPDATED
+        DELETED
+    }
     #38 added subscription payloads
+    #40 changed mutation to mutationtype format
     type PostSubscriptionPayload{
-        mutation: String!
+        mutation: MutationType!
         data: Post!
+    }
+    #39 challenge added comment payload
+    type CommentSubscriptionPayload{
+        mutation: MutationType!
+        data: Comment!
     }

@@ -140,7 +140,7 @@ updatePost(parent, args, { db, pubsub }, info){
             }
         })
     }
-    } else if (post.published){}
+    } else if (post.published){
     //in the case that the post has been updated
         pubsub.publish('post', {
             post:{
@@ -148,6 +148,7 @@ updatePost(parent, args, { db, pubsub }, info){
                 data: post
             }
         })
+    }
     return post
 
 
@@ -155,6 +156,7 @@ updatePost(parent, args, { db, pubsub }, info){
 createComment(parent, args, { db, pubsub }, info){
     const userExists = db.users.some((user) => user.id === args.data.author)
     const postExists = db.posts.some((post) => post.id === args.data.post && post.published)
+
     if (!userExists || !postExists) {
         throw new Error('Unable to find user and post')
 
@@ -164,20 +166,34 @@ createComment(parent, args, { db, pubsub }, info){
         id: uuidv4(),
         ...args.data
     }
+    //39
     db.comments.push(comment)
     //lesson 36 added the pubsub.publish line.  I'm not clear on the two parameters defined below
-    pubsub.publish(`comment ${args.data.post}`, { comment})
+    pubsub.publish(`comment ${args.data.post}`, {
+        comment: {
+            mutation: 'CREATED',
+            data: comment
+        } 
+    })
+
+
     return comment
 },
-deleteComment(parent, args, { db }, info){
+deleteComment(parent, args, { db, pubsub }, info){
     const commentIndex = db.comments.findIndex((comment) => comment.id === args.id)
     if (commentIndex === -1) {
         throw new Error('Comment does not exist')
     }
-    const deletedComments = db.comments.splice(commentIndex, 1)
-    return deletedComments[0]
+    const [deletedComment] = db.comments.splice(commentIndex, 1)
+    pubsub.publish(`comment ${deletedComment.post}`, {
+        comment: { 
+            mutation: 'DELETED',
+            data: deletedComment
+        }
+    })
+    return deletedComment
 },
-updateComment (parent, args, { db }, info){
+updateComment (parent, args, { db, pubsub }, info){
     const { id, data } = args
     const comment = db.comments.find((comment) => comment.id === id)
     if (!comment){
@@ -186,6 +202,12 @@ updateComment (parent, args, { db }, info){
     if (typeof data.text === 'string') {
         comment.text = data.text
     }
+    pubsub.publish('comment ${comment.post}',{
+        comment:{
+            mutation: 'UPDATED',
+            data: comment
+        }
+    })
     return comment
 
 }
