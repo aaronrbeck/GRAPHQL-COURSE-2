@@ -54,7 +54,7 @@ Section 3: mutations
 31: refactor into seperate files to resolvers folder
     imported each file into index.js, and added them to a resolvers oject in the gql server
 32: added updateUser mutation to schema
-
+33a: added updatePost mutation - on my own
 
 
 
