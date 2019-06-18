@@ -62,14 +62,12 @@ Section 4: subscriptions
 35: set up a dummy introductory subscriptions
 36: set up a comment subscription in subscription.js and called pubsub on createComment in mutation.js
 37: post subscription challenge - fell flat on my face - need to walk through again how everything refrences each other
-38: stopped just before delete post subscription
+38: post subscription added
 
 
 
 Where I'm stuck
-
-
-38: once again, the dreaded cannont return null for non-nullable field Subscription.post
+38 updatePost mutation will not affect the Boolean status of published
 
 
 How I got unstuck
@@ -126,5 +124,7 @@ How I got unstuck
 33: cannont return null for non-nullable
     I gotta figure this one out. I've run into this three times, why havn't I learned my lesson?
     ALWAYS RETURN SOMETHING
+38: once again, the dreaded cannont return null for non-nullable field Subscription.post
+    once again, same problem, in a function I had an object as plural when it should have been singular
 -
 

@@ -97,7 +97,7 @@ deletePost(parent, args, { db, pubsub }, info){
     db.comments = db.comments.filter((comment) => comment.post !== args.id)
    if (post.published){
        pubsub.publish('post',{
-           posts:{
+           post:{
                mutation: 'DELETED',
                data: post
            }
@@ -105,9 +105,11 @@ deletePost(parent, args, { db, pubsub }, info){
    }
     return post
 },
-updatePost(parent, args, { db }, info){
+updatePost(parent, args, { db, pubsub }, info){
     const { id, data } = args
     const post = db.posts.find((post) => post.id === id)
+    //38 for subscription we need to know if the original post was published or unpublished
+    const originalPost = {...post}
     if (!post) {
         throw new Error('Post not found')
 
@@ -120,7 +122,32 @@ updatePost(parent, args, { db }, info){
     }
     if (typeof data.published === Boolean) {
         post.published = data.published
+
+        if (originalPost.published && !post.published){
+            //in the case that the post has been deleted
+            pubsub.publish('post', {
+                post: {
+                    mutation: 'DELETED',
+                    data: originalPost
+                }
+            })
+        } else if (!originalPost.publsihed && post.published){
+        //in the case that post has been created
+        pubsub.publish('post', {
+            post:{
+                mutation: 'CREATED',
+                data: post
+            }
+        })
     }
+    } else if (post.published){}
+    //in the case that the post has been updated
+        pubsub.publish('post', {
+            post:{
+                mutation: 'UPDATED',
+                data: post
+            }
+        })
     return post
 
 
