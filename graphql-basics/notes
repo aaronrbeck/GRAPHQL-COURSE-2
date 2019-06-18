@@ -57,8 +57,9 @@ Section 3: mutations
 33a: added updatePost mutation - on my own
 33b: added updateComment mutation - initially I forgot to return comment which resulted in playground warning: cannont return null for non-nullable
 
-
-
+Section 4: subscriptions
+34: intruduction lecture
+35: set up a dummy introductory subscriptions
 
 
 

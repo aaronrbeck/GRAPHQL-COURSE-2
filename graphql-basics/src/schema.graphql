@@ -20,6 +20,10 @@
         deleteComment(id: ID!): Comment!
         updateComment(id: ID!, data: UpdateCommentInput!): Comment!
     }
+#  35 subscriptions
+type Subscription{
+    count: Int!
+}
 
     input CreateUserInput{
         name: String!
