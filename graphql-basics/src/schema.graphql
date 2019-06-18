@@ -18,6 +18,7 @@
         updatePost(id: ID!, data: UpdatePostInput!): Post!
         createComment(data: CreateCommentInput!): Comment!
         deleteComment(id: ID!): Comment!
+        updateComment(id: ID!, data: UpdateCommentInput!): Comment!
     }
 
     input CreateUserInput{
@@ -47,6 +48,10 @@
         text: String!
         author: ID!
         post: ID!
+    }
+    input UpdateCommentInput{
+        text: String
+    
     }
 
 

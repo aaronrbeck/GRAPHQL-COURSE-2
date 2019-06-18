@@ -55,6 +55,7 @@ Section 3: mutations
     imported each file into index.js, and added them to a resolvers oject in the gql server
 32: added updateUser mutation to schema
 33a: added updatePost mutation - on my own
+33b: added updateComment mutation - initially I forgot to return comment which resulted in playground warning: cannont return null for non-nullable
 
 
 
@@ -65,6 +66,7 @@ Section 3: mutations
 
 
 Where I'm stuck
+
 
 
 
@@ -121,5 +123,8 @@ How I got unstuck
       how can the user not be defined?  it is not saying that the user does not exist, 
       just that it is not defined.  how can I be missing the clues?
 
+33: cannont return null for non-nullable
+    I gotta figure this one out. I've run into this three times, why havn't I learned my lesson?
+    ALWAYS RETURN SOMETHING
 -
 
