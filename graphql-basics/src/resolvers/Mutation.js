@@ -58,7 +58,7 @@ updateUser(parent, args, { db }, info){
     }
     return user
 },
-createPost(parent, args, { db }, info){
+createPost(parent, args, { db, pubsub }, info){
     const userExists = db.users.some((user) => user.id === args.data.author)
     if (!userExists) {
         throw new Error('User not found')
@@ -69,7 +69,12 @@ createPost(parent, args, { db }, info){
         ...args.data
     }
     db.posts.push(post)
+    //lesson 37 challeng added the pubsub.publish line.  I'm not clear on the two parameters defined below
+    if (args.data.published){
+        pubsub.publish('post', { post })
+    }
     return post
+
 },
 deletePost(parent, args, { db }, info){
     const postIndex = db.posts.findIndex((post) => post.id === args.id)

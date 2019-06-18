@@ -22,9 +22,11 @@
     }
 #  35 subscriptions
 type Subscription{
-    count: Int!
-    comment(postID: ID!): Comment!
+    comment(postId: ID!): Comment!
+    #36 post subscriptio challenge
+    post: Post!
 }
+
 
     input CreateUserInput{
         name: String!
