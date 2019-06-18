@@ -24,7 +24,8 @@
 type Subscription{
     comment(postId: ID!): Comment!
     #36 post subscriptio challenge
-    post: Post!
+    #38 changed to the payload formatt
+    post: PostSubscriptionPayload!
 }
 
 
@@ -83,4 +84,9 @@ type Subscription{
         text: String!
         author: User!
         post: Post!
+    }
+    #38 added subscription payloads
+    type PostSubscriptionPayload{
+        mutation: String!
+        data: Post!
     }

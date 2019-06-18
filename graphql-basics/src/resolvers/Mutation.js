@@ -71,19 +71,39 @@ createPost(parent, args, { db, pubsub }, info){
     db.posts.push(post)
     //lesson 37 challeng added the pubsub.publish line.  I'm not clear on the two parameters defined below
     if (args.data.published){
-        pubsub.publish('post', { post })
+        //lesson 38 modified to accomodate payload formatting from:
+        // pubsub.publish('post', { post })
+        //to:
+        pubsub.publish('post',{
+            post:{
+                mutation: 'CREATED',
+                data: post
+            }
+        })
+
+
     }
     return post
 
 },
-deletePost(parent, args, { db }, info){
+deletePost(parent, args, { db, pubsub }, info){
     const postIndex = db.posts.findIndex((post) => post.id === args.id)
     if (postIndex === -1) {
         throw new Error('post does not exist')
     }
-    const deletedPosts = db.posts.splice(postIndex, 1)
+    //in lesson 38 we destructured from const deletedPosts
+    //to const [post], but I don't totally understand how that works
+    const [post] = db.posts.splice(postIndex, 1)
     db.comments = db.comments.filter((comment) => comment.post !== args.id)
-    return deletedPosts[0]
+   if (post.published){
+       pubsub.publish('post',{
+           posts:{
+               mutation: 'DELETED',
+               data: post
+           }
+       })
+   }
+    return post
 },
 updatePost(parent, args, { db }, info){
     const { id, data } = args
