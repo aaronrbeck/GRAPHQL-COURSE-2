@@ -106,6 +106,8 @@ Section 5:
     set up prisma.query.comments in prisma.js and outputted to console as challenge
 52: node mutations added to prisma.js - working but see notes
     added createPost and updatePost mutations in prisma.js
+
+53
 -
 
 
@@ -143,7 +145,10 @@ Section 5:
                 https://stackoverflow.com/questions/25058649/psql-fatal-too-many-connections-for-role
                 that suggests deleting the processes listed in "Database Activity" in the Dashboard Tab, but I do not have and can not locate a dashboard tab.  pgadmin 4.8
             I'm wondering if these problems are related to one another.
-
+53: effing burned out, queries are not working at all just getting: 
+UnhandledPromiseRejectionWarning: [object Array]
+(node:15207) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 2)
+(node:15207) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 -
 
 
