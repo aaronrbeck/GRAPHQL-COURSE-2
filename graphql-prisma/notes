@@ -104,7 +104,8 @@ Section 5:
     import prisma to index.js
     set up prisma.query.users in prisma.js
     set up prisma.query.comments in prisma.js and outputted to console as challenge
-52: node mutations added to prisma.js
+52: node mutations added to prisma.js - working but see notes
+    added createPost and updatePost mutations in prisma.js
 -
 
 
@@ -133,7 +134,15 @@ Section 5:
         ** tracked this down to another extra s, I had deletedComments when I needed deletedComment for my return value in my deletecomment mutation
 
 47: my postgres instance is not automatically creating the updated at or the created at columns - why not?
-
+52: I've got 2 things going on that I can't track down:
+        1. my prisma.query.users async function in prisma.js is not logging the query to the console.
+        * now it seems to have resolved itself?
+    2.  when I try to check tables in my database with pg admin I get an error that reads:
+        FATAL: too many connections for role "bmrduerfgyrtgs"
+            I found this stackoverflow thread
+                https://stackoverflow.com/questions/25058649/psql-fatal-too-many-connections-for-role
+                that suggests deleting the processes listed in "Database Activity" in the Dashboard Tab, but I do not have and can not locate a dashboard tab.  pgadmin 4.8
+            I'm wondering if these problems are related to one another.
 
 -
 
