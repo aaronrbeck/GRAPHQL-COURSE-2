@@ -86,7 +86,22 @@ Section 5:
 
 
 
-Where I'm stuck
+47: explored mutations and queries using playground docs
+    wrote first user to database and explored postgres db via pgadmin did not push
+
+
+
+-
+
+
+
+
+
+
+
+
+
+-Where I'm stuck
 38 updatePost mutation will not affect the Boolean status of published
 39: testing comment subscription:
     ok: subscritions to creates work
@@ -97,7 +112,7 @@ Where I'm stuck
         this last one i would guess that I am not handling my deletedComment catch array correctly
         ** tracked this down to another extra s, I had deletedComments when I needed deletedComment for my return value in my deletecomment mutation
 
-
+47: my postgres instance is not automatically creating the updated at or the created at columns - why not?
 
 
 
