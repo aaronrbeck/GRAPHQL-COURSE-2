@@ -21,19 +21,39 @@ const prisma = new Prisma({
 //prisma.query  prisma.mutation prisma.subscription prisam.exists
 
 //all prisma methods take 2 arguments: operation and selection set
-prisma.query.users(null, '{ id name email }')
+prisma.query.users(null, '{ id name posts { id title } }')
     //the above returns a promise so
     .then((data) => {
         // 51 use the JSON.stringify with 3 defined parameters 
         // to make console output more Readable similar 
         // formatt to playground
         console.log(JSON.stringify(data, undefined, 2))
+    }).catch((error)=>{
+        console.error("error in prisma.query.users")
     })
+
 
     // 51 challenge:
     // use comments query to fetch all comments, grab id and text
     // grab comment author id and name
     // view in terminal
-prisma.query.comments(null, '{ id text author {id name}}').then((data)=>{
-    console.log(JSON.stringify(data, undefined, 2))
-})
+// prisma.query.comments(null, '{ id text author {id name}}').then((data)=>{
+//     console.log(JSON.stringify(data, undefined, 2))
+// })
+
+
+// 52 node origination mutation
+// prisma.mutation.createPost({
+//     data: {
+//         title: "My new graphql post is live",
+//     body: "You can find the new course here",
+//     published: true,
+//     author:{
+//         connect: {
+//             id: "cjx3ai49e00fv0791tf4bn3fh"
+//         }
+//     }
+// }
+// }, '{ id title body published }').then((data) => {
+//     console.log(data)
+// } )

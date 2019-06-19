@@ -104,7 +104,7 @@ Section 5:
     import prisma to index.js
     set up prisma.query.users in prisma.js
     set up prisma.query.comments in prisma.js and outputted to console as challenge
-
+52: node mutations added to prisma.js
 -
 
 
