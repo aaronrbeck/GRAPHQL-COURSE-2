@@ -89,9 +89,23 @@ Section 5:
 47: explored mutations and queries using playground docs
     wrote first user to database and explored postgres db via pgadmin did not push
 48/49: added type Post and type comment to datamodel.graphql
-50: start integrating node.js and prisma api
+50: start integrating node.js and prisma api - see notes for all that happened
     copied node-modules src .babelrc notes package-lock.json package.json from graphql-basics project folder to graphql-prisma project folder
-    
+    configured prisma-binding - bindings for node.js
+    npm install prisma-binding
+    created prisma.js in src
+    npm install graphql-cli in orde to use it's get-schema funtionality within prisma.js via package.json
+    created .graphqlconfig in project root folder and set language mode to json
+    created generated folder inside source folder
+    added get-schema script to package.json
+    npm run get-schema to auto build a file with schemas in the generated folder with a file name of prisma.graphql as we specified in .graphqlconfig file
+    so if we modify our datamodel.graphql file we must prisma deploy and also run the get-schema script
+51: using node.js to write to db
+    import prisma to index.js
+    set up prisma.query.users in prisma.js
+    set up prisma.query.comments in prisma.js and outputted to console as challenge
+
+-
 
 
 
@@ -119,9 +133,6 @@ Section 5:
         ** tracked this down to another extra s, I had deletedComments when I needed deletedComment for my return value in my deletecomment mutation
 
 47: my postgres instance is not automatically creating the updated at or the created at columns - why not?
-
-
-
 
 
 -
@@ -192,5 +203,14 @@ How I got unstuck
     I have line by lined the schema.graphql
     **finally found it as a misnamed object from when I copy and pasted some sections to use as a template
     ** problem was in the pubsub section of createComment on mutation.js
+51: at npm run i get Error: Cannot find module '../lib/cli'
+    i see that I had this problem last time I did the course as well
+    previous solution worked this time as well: node-modules do not like to be copy and pasted.  I deleted and npm installed new ones
+51: at npm start i get: Error: Cannot find module './prisma'
+    I may have installed this in the basics project by accident
+    this problems was that I had placed ./prisma in the basics project instead of the prisma project, eye roll
+51:  no such file or directory, open 'src/genrated/prisma.graphql'
+    so, where am I making that misspelled request? terminal error print out does not make it easy to find
+    it was in the prisma.js - maybe I got that info from the terminal, more like I just got lucky
 -
 
