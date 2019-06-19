@@ -88,7 +88,7 @@ Section 5:
 
 47: explored mutations and queries using playground docs
     wrote first user to database and explored postgres db via pgadmin did not push
-
+48/49: added type Post and type comment to datamodel.graphql
 
 
 -
