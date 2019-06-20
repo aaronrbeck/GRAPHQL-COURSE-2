@@ -85,11 +85,11 @@ const prisma = new Prisma({
 }
 
 
-updatePostForUser("cjx4nso8q01l8079147s768lg", { published: true }).then((user) => {
-        console.log(JSON.stringify(user, undefined, 2))
-    }).catch((error) => {
-        console.log(error.message)
-    })
+// updatePostForUser("cjx4nso8q01l8079147s768lg", { published: true }).then((user) => {
+//         console.log(JSON.stringify(user, undefined, 2))
+//     }).catch((error) => {
+//         console.log(error.message)
+//     })
 
     
 

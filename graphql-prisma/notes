@@ -115,7 +115,14 @@ Section 5:
     when I use a valid postid i get back undefined.  hmmm.
     I changed my data from pubished: false to published: true and I get back an error: address already in use plus undefined
     killed server, restarted, I get undefined again.  hmmm.
+55 - set up @relation on datamodel.graphql
+    NOTE TO SELF:  Need to come up with a better way to name/organize
+    all the different graphql/datamodel/ files to better keep track in 
+    my head as to what they all do/what they are for - easy to get them confused
+    onDelete relation CommentToUser is currently in violation
+56 - challenge    
 -
+
 
 
 
