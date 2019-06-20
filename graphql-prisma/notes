@@ -107,7 +107,14 @@ Section 5:
 52: node mutations added to prisma.js - working but see notes
     added createPost and updatePost mutations in prisma.js
 
-53
+53 - async/await with prisma binding - queries have unhandled promises for some reason
+54 - added prisma.exists, refactored query selection set in createPostForUser
+    challege refactor updatepostforuser function with prisma.exists
+    my solution came back as undefined: I had been returning return post.postId when I needed to return return post.author, but that was not the problem
+    when I use an invalid postid i do get my catch call
+    when I use a valid postid i get back undefined.  hmmm.
+    I changed my data from pubished: false to published: true and I get back an error: address already in use plus undefined
+    killed server, restarted, I get undefined again.  hmmm.
 -
 
 
@@ -145,10 +152,9 @@ Section 5:
                 https://stackoverflow.com/questions/25058649/psql-fatal-too-many-connections-for-role
                 that suggests deleting the processes listed in "Database Activity" in the Dashboard Tab, but I do not have and can not locate a dashboard tab.  pgadmin 4.8
             I'm wondering if these problems are related to one another.
-53: effing burned out, queries are not working at all just getting: 
-UnhandledPromiseRejectionWarning: [object Array]
-(node:15207) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 2)
-(node:15207) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+54: another unhandled promise rejection
+    narrowed down to somewhere inside update post for user function
+    perhaps I just need a catch?
 -
 
 
@@ -226,5 +232,9 @@ How I got unstuck
 51:  no such file or directory, open 'src/genrated/prisma.graphql'
     so, where am I making that misspelled request? terminal error print out does not make it easy to find
     it was in the prisma.js - maybe I got that info from the terminal, more like I just got lucky
+53: unhandled promis rejection: misspelled an argument in a console.log - saw by total randomness
+    UnhandledPromiseRejectionWarning: [object Array]
+    (node:15207) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 2)
+    (node:15207) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 -
 
