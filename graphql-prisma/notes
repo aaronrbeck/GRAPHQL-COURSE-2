@@ -120,7 +120,8 @@ Section 5:
     all the different graphql/datamodel/ files to better keep track in 
     my head as to what they all do/what they are for - easy to get them confused
     onDelete relation CommentToUser is currently in violation
-56 - challenge    
+56 - challenge, dublicated prisma folder to prisma-review-website folder, deleted docker file, changed endpoint prisma.yml of new folder to service name review/default which created no space in database(review = project name, default = stage name)
+57 - set up and ran first playground go around on book-review project
 -
 
 
