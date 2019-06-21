@@ -122,6 +122,15 @@ Section 5:
     onDelete relation CommentToUser is currently in violation
 56 - challenge, dublicated prisma folder to prisma-review-website folder, deleted docker file, changed endpoint prisma.yml of new folder to service name review/default which created no space in database(review = project name, default = stage name)
 57 - set up and ran first playground go around on book-review project
+
+Section 6 authentication
+58 - intro video
+59 - added prisma to context 
+    in order to change 4000 eyes in resolvers from static data and instead to prisma database 
+    comment out all but connection info then export prisma.js
+    node.js goes between user graphql api
+60 - prisma added to context in query.js then used to perform where filtering
+
 -
 
 

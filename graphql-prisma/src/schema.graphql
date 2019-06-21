@@ -68,7 +68,6 @@ type Subscription{
         id: ID!
         name: String!
         email: String!
-        age: Int
         posts: [Post!]!
         comments: [Comment!]!
     }

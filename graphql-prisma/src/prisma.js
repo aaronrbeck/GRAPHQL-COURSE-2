@@ -14,6 +14,8 @@ const prisma = new Prisma({
 
 })
 
+export { prisma as default }
+
 
 // 51: using Node.js to crud to db
 // prisma.query  prisma.mutation prisma.subscription prisam.exists
@@ -67,29 +69,29 @@ const prisma = new Prisma({
     //print the user infor ot the console and test your work
 
 
- const updatePostForUser = async (postId, data) => {
-     const postExists = await prisma.exists.Post({ id: postId })
-     if (!postExists) {
-         throw new Error('Post not found')
-     }
+//  const updatePostForUser = async (postId, data) => {
+//      const postExists = await prisma.exists.Post({ id: postId })
+//      if (!postExists) {
+//          throw new Error('Post not found')
+//      }
 
-    const post = await prisma.mutation.updatePost({
-     where: {
-         id: postId
-     },
-     data
+//     const post = await prisma.mutation.updatePost({
+//      where: {
+//          id: postId
+//      },
+//      data
 
-     }, //this second argument is the selection set:
-     '{ author { id name email posts { id title published }} }')
-     return post.author    
-}
+//      }, //this second argument is the selection set:
+//      '{ author { id name email posts { id title published }} }')
+//      return post.author    
+// }
 
 
-updatePostForUser("cjx5acqxl024f0791rsf9td1b", { published: true }).then((user) => {
-        console.log(JSON.stringify(user, undefined, 2))
-    }).catch((error) => {
-        console.log(error.message)
-    })
+// updatePostForUser("cjx5acqxl024f0791rsf9td1b", { published: true }).then((user) => {
+//         console.log(JSON.stringify(user, undefined, 2))
+//     }).catch((error) => {
+//         console.log(error.message)
+//     })
 
     
 
