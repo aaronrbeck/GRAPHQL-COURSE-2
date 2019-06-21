@@ -130,7 +130,8 @@ Section 6 authentication
     comment out all but connection info then export prisma.js
     node.js goes between user graphql api
 60 - prisma added to context in query.js then used to perform where filtering
-
+61 - refactored Query.js to let prisma do heavy lifting
+    we wiped functions out of Query.js and post.js in order to take advantage of prisma's heavy lifting capacity
 -
 
 
