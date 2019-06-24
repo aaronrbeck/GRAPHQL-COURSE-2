@@ -132,6 +132,8 @@ Section 6 authentication
 60 - prisma added to context in query.js then used to perform where filtering
 61 - refactored Query.js to let prisma do heavy lifting
     we wiped functions out of Query.js and post.js in order to take advantage of prisma's heavy lifting capacity
+62 - added prisma to Mutation.js thereby moving eyes from static data to the heroku postgres db
+63 - refactored mutation.js
 -
 
 
