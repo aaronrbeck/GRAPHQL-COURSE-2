@@ -12,6 +12,12 @@ const Query = {
                 }
             }
             return prisma.query.users(opArgs, info)
+            //I was trying to get fancy and return a token as well, didn't work:
+            // const user = prisma.query.users(opArgs, info)
+            // return {
+            //     user,
+            //     token: jwt.sign({ userId: user.id }, 'thisisasecret')
+            // }
         
             
             

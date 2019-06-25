@@ -63,10 +63,14 @@ return prisma.mutation.deleteUser({
     }
 }, info)
 },
-async updateUser(parent, args, { prisma }, info){
+async updateUser(parent, args, { prisma, request }, info){
+    //72 locking down mutations use reques off context which comes from 
+    //the function in utils/getUserId.js
+    const userId = getUserId(request)
+
     return prisma.mutation.updateUser ({
         where:{
-            id: args.id
+            id: userId
         },
         data: args.data
     }, info)
@@ -91,7 +95,18 @@ async createPost(parent, args, { prisma, request }, info){
 
 
 },
-async deletePost(parent, args, { prisma }, info){
+async deletePost(parent, args, { prisma, request }, info){
+    //72 update with request
+    const userId = getUserId(request)
+    const postExists = await prisma.exists.Post({
+        id: args.id,
+        author:{
+            id: userId
+        }
+    })
+    if (!postExists){
+        throw new Error ('Unable to delete')
+    }
     return prisma.mutation.deletePost({
         where:{
             id: args.id
