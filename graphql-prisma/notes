@@ -150,6 +150,7 @@ Section 6 authentication
     }
     to get the token, cd into prisma folder then prisma token
 67 - added password: String! to datamodel and schema.graphql, delete bd data, redeploy, then regenerate prisma/graphql with run get-schema and changed .graphqlconfig to get around the prisma password by pointing at local prisma folder instead of 4466 via "prisma":"prisma/prisma.yml" extnesion
+68 in mutation.js: take in pw, validate pw length, hash pw with bcrypt(uninstalled uuid, installed bcrypt), generate auth token
 
 -
 

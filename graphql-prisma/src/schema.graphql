@@ -33,6 +33,8 @@ type Subscription{
     input CreateUserInput{
         name: String!
         email: String!
+        # 68 add pw:
+        password: String!
     }
 
     input UpdateUserInput{
