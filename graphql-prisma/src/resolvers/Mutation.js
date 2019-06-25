@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken'
 import prisma from '../prisma'
 import { assign } from 'apollo-utilities';
 
+//71 import getUserId
+import getUserId from '../utils/getUserId'
 //70 logging in existing users
 
 
@@ -69,7 +71,10 @@ async updateUser(parent, args, { prisma }, info){
         data: args.data
     }, info)
 },
-async createPost(parent, args, { prisma }, info){
+async createPost(parent, args, { prisma, request }, info){
+    //71 get user Id
+    const userId = getUserId(request)
+    
     return prisma.mutation.createPost ({
         
         data: {
@@ -78,7 +83,7 @@ async createPost(parent, args, { prisma }, info){
             published: args.data.published,
             author:{
                 connect:{
-                    id: args.data.author
+                    id: userId
                 }
             }
         }

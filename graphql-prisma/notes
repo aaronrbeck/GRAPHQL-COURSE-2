@@ -167,6 +167,10 @@ Section 6 authentication
         //copy webtoken from console, take to jwt.io
         //token sections: header, payload, signiture, seperated by periods, signature is a hash
 70 -  set up login mutation - not totally functioning: Illegal arguments: string, undefined in the playground
+72 - set up authentication for createPost
+    inside playground, in http headers (lower left) provide auth token for a user
+    changed server context in index.js to a function that will return our context object
+    created a utility function in src folder utils
 -
 
 
