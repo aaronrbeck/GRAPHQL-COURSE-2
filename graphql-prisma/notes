@@ -166,7 +166,7 @@ Section 6 authentication
         console.log(decoded2)
         //copy webtoken from console, take to jwt.io
         //token sections: header, payload, signiture, seperated by periods, signature is a hash
-
+70 -  set up login mutation - not totally functioning: Illegal arguments: string, undefined in the playground
 -
 
 
@@ -208,6 +208,22 @@ Section 6 authentication
 54: another unhandled promise rejection
     narrowed down to somewhere inside update post for user function
     perhaps I just need a catch?
+70: "message": "Illegal arguments: string, undefined"
+    in the playground, trying to run a login mutation
+    i feel like i have the mutation written correctly:
+    mutation{
+  login(
+    data:{
+      email:"prisma3@testemail",
+      password:"red12345"
+    }
+    I do get back my error message if i submit incorrect email/password combination
+    so how is my argument illegal, how is the string undefinde?
+    ok, this is interesting, if I submit an incorrect password, I don't get my error message
+    instead I get this illegal argument message.  interesting.
+    so something is wrong with how the password is (not) working
+
+    
 -
 
 
