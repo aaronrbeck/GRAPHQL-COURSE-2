@@ -56,10 +56,9 @@ async deletePost(parent, args, { prisma }, info){
     return prisma.mutation.deletePost({
         where:{
             id: args.id
-        },
-        data: data.args
+        }
         
-    })
+    }, info)
 },
 async updatePost(parent, args, { prisma }, info){
 return prisma.mutation.updatePost({
@@ -72,8 +71,7 @@ return prisma.mutation.updatePost({
 async createComment(parent, args, { prisma }, info){
     return prisma.mutation.createComment({
         data:{
-            text: args.data.text
-        },
+            text: args.data.text,
         author:{
             connect:{
                 id: args.data.author
@@ -84,6 +82,7 @@ async createComment(parent, args, { prisma }, info){
                 id: args.data.post
             }
         }
+    }
     }, info)
 },
 deleteComment(parent, args, { prisma }, info){

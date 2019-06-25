@@ -94,10 +94,14 @@ type Subscription{
     #40 changed mutation to mutationtype format
     type PostSubscriptionPayload{
         mutation: MutationType!
-        data: Post!
+        #65 challenge, change data:Post! to match prisma schemal layout
+        node: Post
     }
     #39 challenge added comment payload
     type CommentSubscriptionPayload{
         mutation: MutationType!
-        data: Comment!
+    #65 changed data: Comment! to node: Comment to get the two playgrounds to talk the same format
+    #65 we knew how to format this by looking in the prisma schema format at 4466
+
+        node: Comment
     }
