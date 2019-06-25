@@ -141,6 +141,14 @@ Section 6 authentication
     I cannont for the life of me get a create comment mutation to work in the 4000 playground
     comment subscription is not working.  when I update a comment it seems to update ok as I do get a return value, but the subscription just spins circles
     no I suddenly get an unkown argument when I try to start my comment subscription
+66 - set prisma secret
+    on the prisma side: change prisam/prisma.yml, add secret, changes to prisma.yml require a re-deploy from prisma folder
+    on the node side: change prisma.js on the prisma constructor function provide the secret
+    in order to continue using prisma at 4466 provide an authorization token via http headers found in the bottom left of the prisma playground
+    {
+        "Authorization" : "Bearer ReplaceThisWithPrismaGeneratedToken"
+    }
+    to get the token, cd into prisma folder then prisma token
 -
 
 

@@ -10,7 +10,9 @@ const prisma = new Prisma({
     //typeDefs comes from what prisma auto generates from our datamodel.graphql page
     //but we need help from  graphql-cli  to accomplish connection
     typeDefs: 'src/generated/prisma.graphql',
-    endpoint: 'http://localhost:4466'
+    endpoint: 'http://localhost:4466',
+    //66 added secret that matches secret in prisma.yml
+    secret: 'thisismysecret'
 
 })
 

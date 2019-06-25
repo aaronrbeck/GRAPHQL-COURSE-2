@@ -1,3 +1,5 @@
 endpoint: http://localhost:4466
 # datamodel: datamodel.prisma
 datamodel: datamodel.graphql
+#66 added secret
+secret: thisismysecret
