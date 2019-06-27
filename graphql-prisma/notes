@@ -171,6 +171,7 @@ Section 6 authentication
     inside playground, in http headers (lower left) provide auth token for a user
     changed server context in index.js to a function that will return our context object
     created a utility function in src folder utils
+73 - used ctx->request to *lock down* mutation resolvers to logged in users
 -
 
 
