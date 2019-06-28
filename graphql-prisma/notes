@@ -5,6 +5,11 @@ docker ps   docker kill  docker rm
 somehow prisma api playground is at localhost 4466
 somehow node.js playground is at localhost 4000
 
+Graphql-prisma project
+npm start from graphql-prisma folder: starts application
+prisma deploy from graphql-prisma/prisma folder: 
+npm run get-schema: run from the graphql-prisma folder: builds a generated prisma.graphql file
+
 Lessons:
 Section 1
 Lectures
@@ -172,6 +177,9 @@ Section 6 authentication
     changed server context in index.js to a function that will return our context object
     created a utility function in src folder utils
 73 - used ctx->request to *lock down* mutation resolvers to logged in users
+74 - locked down queries, added requireAuth as parameter to and restructured getUserId.js
+    , posts publicly availabel, draft posts only available to logged in user
+    modified getUserId.js - read through this logic again to understand what is happening
 -
 
 

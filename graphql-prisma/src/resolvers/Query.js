@@ -1,3 +1,5 @@
+import getUserId from '../utils/getUserId'
+
 const Query = {
   
         users(parent, args, { db, prisma }, info) {
@@ -59,21 +61,37 @@ const Query = {
 
         },
 
-        me() {
-            return {
-                id: '123098',
-                name: "mike",
-                email: 'mike@example.com',
-                age: 28
-            }
+        async me(parent, args, { prisma, request }, info) {
+            const userId = getUserId(request)
+            return prisma.query.user({
+                where: {
+                    id: userId
+                }
+            })
         },
-        post() {
-            return {
-                id: 'p123',
-                title: 'post 123 title',
-                body: 'post 123 body',
-                published: false
+        async post(parent, args, { prisma, request }, info) {
+            //74
+            const userId = getUserId(request, false)
+            //74 we are going to query posts instead of post
+            //because posts give us more query options than post
+            const posts = await prisma.query.posts({
+                where:{
+                    id: args.id,
+                    OR: [{
+                        published: true
+                    },{
+                        author:{
+                            id: userId
+                        }
+                    }]
+                }
+            }, info)
+            if(posts.length === 0){
+                throw new Error ('Post not found')
             }
+            return posts[0]
+
+
         },
 
     }
