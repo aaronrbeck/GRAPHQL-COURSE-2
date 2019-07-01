@@ -185,6 +185,9 @@ Section 6 authentication
 77 - added fragment to User.js resolver, added index.js to resolver folder for prisma.js/index.js refactor
     using fragments to close a loophole - fragment lesson
     fragment = reuseable selection set 
+78 - cleaning up edge cases 
+    
+
 -
 
 
