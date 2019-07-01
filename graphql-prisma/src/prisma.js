@@ -3,6 +3,9 @@
 
 import { Prisma } from 'prisma-binding'
 
+//77
+import { fragmentReplacements } from './resolvers/index'
+
 const prisma = new Prisma({
     //50 constructor function that takes
     //50 single object argument
@@ -12,8 +15,9 @@ const prisma = new Prisma({
     typeDefs: 'src/generated/prisma.graphql',
     endpoint: 'http://localhost:4466',
     //66 added secret that matches secret in prisma.yml
-    secret: 'thisismysecret'
-
+    secret: 'thisismysecret',
+    //77
+    fragmentReplacements
 })
 
 export { prisma as default }

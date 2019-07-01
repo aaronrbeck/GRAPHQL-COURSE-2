@@ -182,7 +182,9 @@ Section 6 authentication
     modified getUserId.js - read through this logic again to understand what is happening
 75 - locked down queries from public eyes
 76 - locking down authentication loop holes, type User email nullable, added logic using parent information to User.js
-77 - 
+77 - added fragment to User.js resolver, added index.js to resolver folder for prisma.js/index.js refactor
+    using fragments to close a loophole - fragment lesson
+    fragment = reuseable selection set 
 -
 
 
