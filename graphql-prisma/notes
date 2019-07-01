@@ -180,6 +180,9 @@ Section 6 authentication
 74 - locked down queries, added requireAuth as parameter to and restructured getUserId.js
     , posts publicly availabel, draft posts only available to logged in user
     modified getUserId.js - read through this logic again to understand what is happening
+75 - locked down queries from public eyes
+76 - locking down authentication loop holes, type User email nullable, added logic using parent information to User.js
+77 - 
 -
 
 

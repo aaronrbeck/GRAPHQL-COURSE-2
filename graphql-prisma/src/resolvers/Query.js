@@ -31,17 +31,21 @@ const Query = {
             // })
         },
         posts(parent, args, { db, prisma }, info) {
-            const opArgs = {}
-
-            if (args.query) {
-                opArgs.where = {
-                    OR: [{
-                        body_contains: args.query
-                    }, {
-                        title_contains: args.query
-                    }]
+            const opArgs = {
+                where: {
+                    published: true
                 }
             }
+
+            if (args.query) {
+                opArgs.where.OR = [{
+
+                    title_contains: args.query
+                    }, {
+                        body_contains: args.query
+                    }]
+                }
+            
 
             return prisma.query.posts(opArgs, info)
             
@@ -94,6 +98,26 @@ const Query = {
 
         },
 
+        //75 Challenge
+    async myPosts(parent, args, { prisma, request }, info) {
+            const userId = getUserId(request)
+            const opArgs = {
+                where:{
+                    author:{
+                        id: userId
+                    }
+                }
+            }
+            if(args.query){
+                opArgs.where.OR = [{
+                    title_contains: args.query
+                },{
+                    body_contains: args.query
+                }]
+            }
+        return prisma.query.posts(opArgs, info)
+        }
+        
     }
 
 export { Query as default }
