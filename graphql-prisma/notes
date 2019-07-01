@@ -186,7 +186,7 @@ Section 6 authentication
     using fragments to close a loophole - fragment lesson
     fragment = reuseable selection set 
 78 - cleaning up edge cases 
-    
+79 - created myPost subscription in subscription.js which requires authentication
 
 -
 

@@ -30,6 +30,7 @@ type Subscription{
     #36 post subscriptio challenge
     #38 changed to the payload formatt
     post: PostSubscriptionPayload!
+    myPost: PostSubscriptionPayload!
 }
 
 type AuthPayload{
@@ -116,6 +117,7 @@ type AuthPayload{
         mutation: MutationType!
     #65 changed data: Comment! to node: Comment to get the two playgrounds to talk the same format
     #65 we knew how to format this by looking in the prisma schema format at 4466
+
 
         node: Comment
     }
