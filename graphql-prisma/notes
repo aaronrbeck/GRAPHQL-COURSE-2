@@ -195,6 +195,7 @@ section 7 pagination
 82 intro
 83 - pagination, skip and first added to users and posts
 84 - pagination with after argument added to all queries
+85 - createdAt and updatedAt added to datamodel.graphql, redeployed, re get-schemad, same things added to schema.graphql
 -
 
 
