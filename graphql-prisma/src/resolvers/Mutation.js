@@ -1,7 +1,5 @@
 import  bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import prisma from '../prisma'
-import { assign } from 'apollo-utilities';
+import generateToken from '../utils/generateToken.js'
 
 //71 import getUserId
 import getUserId from '../utils/getUserId'
@@ -22,7 +20,7 @@ const Mutation = {
 })
     return {
         user,
-        token: jwt.sign({ userId: user.id }, 'thisisasecret')
+        token: generateToken(user.id)
     }
 },
 
@@ -36,9 +34,6 @@ async login(parent, args, { prisma }, info){
     if (!user){
         throw new Error ('Unable to login')
     }
-    //if we got this far, we know we have a user, which will 
-    //have a hashed password sitting at user.password
-    //so run check with bcrypt compare
 
     const isMatch = await bcrypt.compare(args.data.password, user.password)
 
@@ -47,7 +42,7 @@ async login(parent, args, { prisma }, info){
     }
     return {
         user,
-        token: jwt.sign({ userId: user.id }, 'thisisasecret')
+        token: generateToken(user.id)
     }
 },
 

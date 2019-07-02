@@ -30,6 +30,7 @@ const Subscription = {
         myPost: {
             subscribe(parent, args, { prisma, request }, info ){
                 const userId = getUserId(request)
+                console.log(request)
                 return prisma.subscription.post({
                     where:{
                         node:{

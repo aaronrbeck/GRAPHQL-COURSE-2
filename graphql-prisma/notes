@@ -187,6 +187,9 @@ Section 6 authentication
     fragment = reuseable selection set 
 78 - cleaning up edge cases 
 79 - created myPost subscription in subscription.js which requires authentication
+80 - used expiresIn to add a token expiration to token object on login and createUser mutations on token jwt in mutation.js
+81 - update user password modification
+
 
 -
 
