@@ -6,9 +6,11 @@ somehow prisma api playground is at localhost 4466
 somehow node.js playground is at localhost 4000
 
 Graphql-prisma project
-npm start from graphql-prisma folder: starts application
-prisma deploy from graphql-prisma/prisma folder: 
-npm run get-schema: run from the graphql-prisma folder: builds a generated prisma.graphql file
+- npm start from graphql-prisma folder: starts application
+- prisma deploy from graphql-prisma/prisma folder: 
+- npm run get-schema: run from the graphql-prisma folder: builds a generated prisma.graphql file
+- if 4466 says your token is no good, run "prisma token" from the prisma directory to get a new header token
+
 
 Lessons:
 Section 1
@@ -196,6 +198,15 @@ section 7 pagination
 83 - pagination, skip and first added to users and posts
 84 - pagination with after argument added to all queries
 85 - createdAt and updatedAt added to datamodel.graphql, redeployed, re get-schemad, same things added to schema.graphql
+86 - added sorting capability to node.js application (localhost:4000)
+    used prisma graphql-import dependancy 
+    (which comes with gql-yoga) to creat an import-like statment 
+    to pull info (like enum) from generated/prisma.graphql to schema.graphql, 
+    import statment hidden behind # comment tag in schema.graphql, 
+    added orderBy: UserOrderByInput to User type in same file
+    defined orderBy: UserOrderByInput in the Query:users opArgs object
+    all of this allows us to use prisma sorting functionality in our node application
+    - re-watch, interesting information
 -
 
 

@@ -6,7 +6,9 @@ const Query = {
         users(parent, args, { prisma }, info) {
             const opArgs = {
                 first: args.first,
-            skip: args.skip
+            skip: args.skip,
+            after: args.after,
+            orderBy: args.orderBy
             }
             if(args.query){
                 opArgs.where = {
@@ -21,8 +23,9 @@ const Query = {
         
         posts(parent, args, { db, prisma }, info) {
             const opArgs = {
-                first: args.first,
+            first: args.first,
             skip: args.skip,
+            orderBy: args.orderBy,
             where: {
                 published: true
             }
@@ -56,7 +59,9 @@ const Query = {
             const opArgs = {
                  first: args.first,
                 skip: args.skip,
-                after: args.after
+                after: args.after,
+                orderBy: args.orderBy
+
 
             }
 
