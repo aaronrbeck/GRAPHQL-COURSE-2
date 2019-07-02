@@ -2,12 +2,12 @@
     # connected to index via Graphql server path directory at bottom of index.js
     
     type Query {
-        users(query: String, first: Int, skip: Int): [User!]!
+        users(query: String, first: Int, skip: Int, after: String): [User!]!
         me: User!
         post(id: ID): Post!
-        posts(query: String, first: Int, skip: Int): [Post!]!
-        comments: [Comment!]!
-        myPosts(query: String): [Post!]!
+        posts(query: String, first: Int, skip: Int, after: String): [Post!]!
+        comments(first: Int, skip: Int, after: String): [Comment!]!
+        myPosts(query: String, first: Int, skip: Int, after: String): [Post!]!
        
     }
 
