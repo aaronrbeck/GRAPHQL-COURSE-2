@@ -1,4 +1,5 @@
 import getUserId from '../utils/getUserId'
+
 const User = {
     email:{
         fragment: 'fragment userId on User { id }',

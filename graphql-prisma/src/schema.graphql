@@ -2,7 +2,7 @@
     # connected to index via Graphql server path directory at bottom of index.js
     
     type Query {
-        users(query: String): [User!]!
+        users(query: String, first: Int, skip: Int): [User!]!
         me: User!
         post(id: ID): Post!
         posts(query: String): [Post!]!
@@ -47,6 +47,7 @@ type AuthPayload{
     input UpdateUserInput{
         name: String
         email: String
+        password: String
     }
 
     input LoginUserInput{

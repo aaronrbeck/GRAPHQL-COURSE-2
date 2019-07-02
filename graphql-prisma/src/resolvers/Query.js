@@ -1,34 +1,21 @@
 import getUserId from '../utils/getUserId'
 
+
 const Query = {
   
-        users(parent, args, { db, prisma }, info) {
-            const opArgs = {}
+        users(parent, args, { prisma }, info) {
+            const opArgs = {
+                first: args.first,
+                skip: args.skip
+            }
             if(args.query){
                 opArgs.where = {
                     OR: [{
                         name_contains: args.query
-                    },{
-                        email_contains: args.query
                     }]
                 }
             }
             return prisma.query.users(opArgs, info)
-            //I was trying to get fancy and return a token as well, didn't work:
-            // const user = prisma.query.users(opArgs, info)
-            // return {
-            //     user,
-            //     token: jwt.sign({ userId: user.id }, 'thisisasecret')
-            // }
-        
-            
-            
-            // if (!args.query) {
-            //     return db.users
-            // }
-            // return db.users.filter((user) => {
-            //     return user.name.toLowerCase().includes(args.query.toLowerCase())
-            // })
         },
         posts(parent, args, { db, prisma }, info) {
             const opArgs = {
@@ -98,7 +85,6 @@ const Query = {
 
         },
 
-        //75 Challenge
     async myPosts(parent, args, { prisma, request }, info) {
             const userId = getUserId(request)
             const opArgs = {

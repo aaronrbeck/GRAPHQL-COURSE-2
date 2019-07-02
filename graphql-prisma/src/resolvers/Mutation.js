@@ -1,17 +1,12 @@
 import  bcrypt from 'bcryptjs'
 import generateToken from '../utils/generateToken.js'
-
-//71 import getUserId
+import hashPassword from '../utils/hashPassword'
 import getUserId from '../utils/getUserId'
-//70 logging in existing users
 
 
 const Mutation = {
     async createUser(parent, args, { prisma }, info){
-        if (args.data.password.length < 8){
-            throw new Error ('Password must be 8 characters or longer.')
-        }
-        const password = await bcrypt.hash(args.data.password, 10)
+        const password = await hashPassword(args.data.password)
         const user = await prisma.mutation.createUser({
     data: {
         ...args.data,
@@ -59,8 +54,11 @@ return prisma.mutation.deleteUser({
 }, info)
 },
 async updateUser(parent, args, { prisma, request }, info){
-    //72 locking down mutations use reques off context which comes from 
-    //the function in utils/getUserId.js
+    if (typeof args.data.password === 'string'){
+        args.data.password = await hashPassword(args.data.password)
+
+    }
+
     const userId = getUserId(request)
 
     return prisma.mutation.updateUser ({
