@@ -5,7 +5,7 @@
         users(query: String, first: Int, skip: Int): [User!]!
         me: User!
         post(id: ID): Post!
-        posts(query: String): [Post!]!
+        posts(query: String, first: Int, skip: Int): [Post!]!
         comments: [Comment!]!
         myPosts(query: String): [Post!]!
        

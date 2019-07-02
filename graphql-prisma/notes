@@ -193,7 +193,7 @@ Section 6 authentication
 
 section 7 pagination
 82 intro
-83 - 
+83 - pagination, skip and first added to users and posts
 
 -
 
@@ -251,7 +251,17 @@ section 7 pagination
     instead I get this illegal argument message.  interesting.
     so something is wrong with how the password is (not) working
 
-    
+83-  running the query:users query results in  "errors": [
+    {
+      "message": "prisma is not defined",
+      other queries seem to be working ok.
+      prisma.js created a new instance of prisma,
+      we import it into our main index.js where it gets,
+      clipped onto our resolver context, then when we write a resolver like
+      query:users we destructure it off resolver context to use it - so I'm not sure why or where it is undefined
+      because other resolvers function it seems like the problem would be in query:users,
+      I have checked code against lesson code, so not sure what is going on
+      question to andrew has been submitted.x
 -
 
 
