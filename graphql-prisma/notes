@@ -207,6 +207,20 @@ section 7 pagination
     defined orderBy: UserOrderByInput in the Query:users opArgs object
     all of this allows us to use prisma sorting functionality in our node application
     - re-watch, interesting information
+
+Section 8 Production Deployment
+88 - create prisma cloud service, connected to production db via pgadmin
+    heroku server will run the docker container
+    heroku database will be our production database
+89 - prisma configuration and Deployment, created prod and dev prisma file, made prisma.yml endpoint dynamic
+    added config folder to project
+    for dev setup:
+    allow prisma to inject production endpoint
+    set up prod.env and configured prisma.yml
+    ran prisma deploy -e ../config/dev.env
+    production set-up:
+    - log into prisma via command line, prisma login
+
 -
 
 
@@ -274,6 +288,15 @@ section 7 pagination
       because other resolvers function it seems like the problem would be in query:users,
       I have checked code against lesson code, so not sure what is going on
       question to andrew has been submitted.x
+
+89 - While authenticated with prisma via a command line prisma login I should 
+    have gotten a server url that I can add to prod.env, but that did not happen for me
+    Also a few days ago I innadvertanly deleted my heroku database, so I think
+    i still need to rebuild and reconnect all that
+        So I think I will go back to pre 89 configuration, then run prisma deploy should propogate my database with table that I should be able to see in pgadmin
+    So datamodel.graphql is what determines which tables get written to our actual database
+    so how does datamodel.graphql get created and how is it connected to other parts?
+    
 -
 
 

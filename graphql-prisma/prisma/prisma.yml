@@ -1,5 +1,8 @@
-endpoint: http://localhost:4466
+#endpoint: ${env:PRISMA_ENDPOINT}
+# endpoint: ec2-23-21-160-38.compute-1.amazonaws.com/d40f7p641ofcun/dev
 # datamodel: datamodel.prisma
+endpoint: http://localhost:4466
+
 datamodel: datamodel.graphql
 #66 added secret
 secret: thisismysecret
