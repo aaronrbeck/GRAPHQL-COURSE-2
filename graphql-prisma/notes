@@ -292,11 +292,13 @@ Section 8 Production Deployment
 89 - While authenticated with prisma via a command line prisma login I should 
     have gotten a server url that I can add to prod.env, but that did not happen for me
     Also a few days ago I innadvertanly deleted my heroku database, so I think
-    i still need to rebuild and reconnect all that
+    i still need to rebuild and reconnec
+    t all that
         So I think I will go back to pre 89 configuration, then run prisma deploy should propogate my database with table that I should be able to see in pgadmin
     So datamodel.graphql is what determines which tables get written to our actual database
     so how does datamodel.graphql get created and how is it connected to other parts?
-    
+    tomorrow I will delete the heroku postgres 
+     database and start over from there.
 -
 
 
