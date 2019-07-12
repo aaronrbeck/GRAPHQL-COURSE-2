@@ -299,6 +299,24 @@ Section 8 Production Deployment
     so how does datamodel.graphql get created and how is it connected to other parts?
     tomorrow I will delete the heroku postgres 
      database and start over from there.
+
+     I ran into some error messages for a while that turned out to be a result of running prisma deploy before the 
+     docker containter was ready.  I got that resolved.
+     Now the biggest problem is that when I run prisma deploy my default$default
+     shcema is not getting written to my heroku postgres database
+     the console says I am up and running at localhost 4466, however the prisma docs fail to load once I'm there.
+     so I don't really believe that I'm running. but maybe that is because my token is invalid?
+        yes - needed new Authorization token for the playground
+    Now at 4466 playground I am trying to run a createUser mutation
+        the playground does not like the way I'm formatting the mutation and it will not allow me to press the play button
+        I am going to remove the created and updatedAt fields from schema and redeploy
+        I was able to form and play a mutation, however I get the following error: 
+        "message": "Whoops. Looks like an internal server error. Search your server logs for request ID: local:cjxxj944o00cf0872cjy6g3eo",
+        which I am going to guess has to do with the fact that I am not writing to my database. how do you search server logs?
+        
+
+
+
 -
 
 
